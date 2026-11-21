@@ -1,0 +1,22 @@
+#===============================================================================
+# @brief    Kconfig file for UART1 <-> BLE transparent bridge sample.
+# Copyright (c) HiSilicon (Shanghai) Technologies Co., Ltd. 2023-2023. All rights reserved.
+#===============================================================================
+
+config UART1_BLE_BRIDGE_DEVICE_NAME
+    string
+    prompt "BLE device name (advertised)"
+    default "WS63-UART1"
+    help
+        Name advertised by the WS63 over BLE. A PC or phone can discover and
+        connect to this name, then exchange data with UART1 through the
+        custom GATT service (0xABCD / 0xCDEF). Keep it within 26 bytes so it
+        fits in the advertising packet; longer names are truncated.
+
+config UART1_BLE_BRIDGE_BAUDRATE
+    int
+    prompt "UART1 baud rate"
+    default 115200
+    range 1200 4000000
+    help
+        Baud rate of UART1. UART1 uses GPIO15 (TX) and GPIO16 (RX).
